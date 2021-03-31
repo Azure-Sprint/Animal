@@ -56,7 +56,7 @@ jobs:
         with:  
           app-name: dev-animal-ilovebbogle # Replace with your app name 
           publish-profile: ${{ secrets.ILOVEBBOGLE_SECRET  }} # Define secret variable in repository settings as per action documentation 
-          package : build
+          package : build/my-artifact
               
 
  
