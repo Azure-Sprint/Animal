@@ -57,10 +57,10 @@ jobs:
           if-no-files-found: error
 
       - name: nuget
-        run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj --output nupkgs
+        run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj --output nupkgs 
     
       - name : push event
-        run : dotnet nuget push "nupkgs/*.nupkg" -k ${GH_TOKEN} --source "https://nuget.pkg.github.com/${REPO_OWNER}/index.json"
+        run : dotnet nuget push "nupkgs/*.nupkg" -k ${GH_TOKEN} --source "https://nuget.pkg.github.com/${REPO_OWNER}/index.json" --skip-duplicate
         
         env:
           GH_TOKEN : ${{secrets.GITHUB_TOKEN}}
