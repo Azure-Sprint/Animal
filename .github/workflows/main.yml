@@ -50,7 +50,7 @@ jobs:
         run : dotnet nuget push "nupkgs/*.nupkg" -k ${GH_TOKEN} --source https://nuget.pkg.github.com/${REPO_OWNER}/index.json
         
         env:
-          GH_TOKEN : ${{scretes.GITHUB_TOKEN}}
+          GH_TOKEN : ${{secrets.GITHUB_TOKEN}}
           REPO_OWNER : ${{github.repository_owner}}
           
 
