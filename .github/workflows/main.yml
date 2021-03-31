@@ -26,22 +26,35 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test AnimalAdoption.Web.Portal.UnitTests --no-build --verbosity normal
+      - name: Publish
+        run: dotnet publish --no-restore --output build
       
-       
-      - name: build
-        run: dotnet build
-        
-      - name: publish
-        run: dotnet publish
-        
-      - run: mkdir -p path/to/artifact
+      - name: List out directory contents
+        run: |
+          echo "Listing the contents of the GitHub workspace directory"
+          ls ${{ github.workspace }}
+          echo "Recursively listing all contents of the current directory"
+          ls -R 
+   
+      - name: artifact-mkdir
+        run: mkdir -p path/to/artifact && echo hello > path/to/artifact/world.txt
 
-      - run: echo hello > path/to/artifact/world.txt
-
-      - uses: actions/upload-artifact@v1
+      - name: artifact-upload
+        uses: actions/upload-artifact@v1
         with:
           name: my-artifact
           path: path/to/artifact
+          if-no-files-found: error
 
       - name: nuget
         run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj --output nupkgs
