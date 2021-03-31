@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 
     <Version>1.0.0</Version>
-    <RepositoryUrl>https://github.com/(your-organisation-name)/(your-repo-name).git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Azure-Sprint/Animal.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
   </PropertyGroup>
