@@ -23,7 +23,8 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test AnimalAdoption.Web.Portal.UnitTests --no-build --verbosity normal
-      
+    - name: Publish
+      run: dotnet publish --no-restore --output build
     - name: List out directory contents
       run: |
         echo "Listing the contents of the GitHub workspace directory"
