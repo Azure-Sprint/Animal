@@ -23,6 +23,13 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test AnimalAdoption.Web.Portal.UnitTests --no-build --verbosity normal
+      steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+    - name: Display structure of downloaded files
+      run: ls -R
     - name: Publish
       run: dotnet publish --no-restore --output build
     - name: List out directory contents
