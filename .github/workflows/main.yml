@@ -47,7 +47,7 @@ jobs:
         run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj --output nupkgs
     
       - name : push event
-        run : dotnet nuget push "nupkgs/*.nupkg" -k ${GH_TOKEN} --source https://nuget.pkg.github.com/${REPO_OWNER}/index.json
+        run : dotnet nuget push "nupkgs/*.nupkg" -k ${GH_TOKEN} --source "https://nuget.pkg.github.com/${REPO_OWNER}/index.json"
         
         env:
           GH_TOKEN : ${{secrets.GITHUB_TOKEN}}
