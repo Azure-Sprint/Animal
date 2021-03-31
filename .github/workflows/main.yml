@@ -44,5 +44,8 @@ jobs:
           path: path/to/artifact
 
       - name: nuget
-        run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj
+        run: dotnet pack AnimalAdoption.Common.Logic/AnimalAdoption.Common.Logic.csproj --output nupkgs
+    
+      - name : push event
+        run : dotnet push nupkgs/*
      
