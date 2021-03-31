@@ -42,8 +42,19 @@ jobs:
           name: my-artifact
           path: build
           if-no-files-found: error
-
-
+          
+          
+  release:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+      - uses: actions/download-artifact@v1
+        with:
+          name: my-artifact
+          path: build
+          if-no-files-found: error
 
       - name: 'Run Azure webapp deploy action using publish profile credentials' 
         uses: azure/webapps-deploy@v2 
